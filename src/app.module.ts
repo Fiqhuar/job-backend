@@ -26,7 +26,7 @@ import { Job } from './job/job.entity';
       port: parseInt(process.env.DB_PORT || '5432', 10),
       username: process.env.DB_USER || 'postgres',
       password: process.env.DB_PASS || 'root',
-      database: process.env.DB_NAME || 'postgres',
+      database: process.env.DB_NAME || 'jobdb',
       entities: [Job],
       synchronize: false,
       ssl: true,
