@@ -33,19 +33,33 @@ import { Job } from './job/job.entity';
     // }),
 
 
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   host: process.env.DB_HOST || 'localhost',
+    //   port: parseInt(process.env.DB_PORT || '5432', 10),
+    //   username: process.env.DB_USER || 'postgres',
+    //   password: process.env.DB_PASS || 'root',
+    //   database: process.env.DB_NAME || 'jobdb',
+    //   entities: [Job],
+    //   synchronize: false,
+    //   ssl: {
+    //     rejectUnauthorized: false,
+    //   },
+    // }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST || 'localhost',
+      host: process.env.DB_HOST,
       port: parseInt(process.env.DB_PORT || '5432', 10),
-      username: process.env.DB_USER || 'postgres',
-      password: process.env.DB_PASS || 'root',
-      database: process.env.DB_NAME || 'jobdb',
+      username: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
       entities: [Job],
       synchronize: false,
       ssl: {
-        rejectUnauthorized: false,
+        rejectUnauthorized: false, // allow self-signed SSL certs (required by Supabase)
       },
     }),
+    
     
 
 
