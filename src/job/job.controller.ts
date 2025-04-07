@@ -1,5 +1,5 @@
 // src/job/job.controller.ts
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Delete } from '@nestjs/common';
 import { JobService } from './job.service';
 import { Job } from './job.entity';
 
@@ -24,4 +24,10 @@ export class JobController {
   async findOne(@Param('id') id: string): Promise<Job | null> {
     return this.jobService.findOne(Number(id));
   }
+
+    // DELETE /job/:id – delete a job by id
+    @Delete(':id')
+    async remove(@Param('id') id: string): Promise<void> {
+      await this.jobService.remove(Number(id));
+    }
 }
