@@ -14,7 +14,7 @@ export class JobService {
     return this.jobRepository.find({
       skip: offset,
       take: limit,
-      select: ['id', 'title', 'company', 'location', 'job_type', 'min_salary', 'max_salary', 'application_deadline', 'description'], // only what’s needed
+      select: ['id', 'title', 'company', 'location', 'job_type', 'min_salary', 'max_salary', 'description'], // only what’s needed
     });
   }
 
