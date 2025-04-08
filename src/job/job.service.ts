@@ -10,15 +10,17 @@ export class JobService {
     private jobRepository: Repository<Job>,
   ) {}
 
-  findAll(): Promise<Job[]> {
-    return this.jobRepository.find();
+  findAll(limit = 10, offset = 0): Promise<Job[]> {
+    return this.jobRepository.find({
+      skip: offset,
+      take: limit,
+      select: ['id', 'title', 'company', 'location'], // only what’s needed
+    });
   }
-
 
   findOne(id: number): Promise<Job | null> {
     return this.jobRepository.findOneBy({ id });
   }
-  
 
   create(job: Partial<Job>): Promise<Job> {
     const newJob = this.jobRepository.create(job);
